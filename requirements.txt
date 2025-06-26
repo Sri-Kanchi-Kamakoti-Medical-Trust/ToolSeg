@@ -12,3 +12,4 @@ einops
 matplotlib
 scikit-multilearn
 albumentations
+tqdm

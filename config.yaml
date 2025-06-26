@@ -2,18 +2,18 @@ project_name: 'msics-toolseg'
 
 # dataset details
 dataset:
-  data_csv_path: 'SanakraMSICS/cataract-msics-data.csv'
-  image_dir: 'SanakraMSICS/images'
-  mask_dir: 'SanakraMSICS/masks'
+  data_csv_path: 'SankaraMSICS/cataract-msics-data.csv'
+  image_dir: 'SankaraMSICS/images'
+  mask_dir: 'SankaraMSICS/masks'
   phase_one_hot: TRUE
-
+  instrument_labels: ["blade","cautery","conjunctivital_scissors","crescent_blade","dialer","hoskins_forceps","hydrodisection_cannula","keratome","rhexis_needle","sideport","simcoe_cannula","vectis","visco_cannula"]
 
 seed: 42
 
 # training details
 init_lr: 1e-4
-n_epochs: 200
-batch_size: 16
+n_epochs: 2
+batch_size: 1
 num_workers: 14
 fold: 0
 patience: 10
