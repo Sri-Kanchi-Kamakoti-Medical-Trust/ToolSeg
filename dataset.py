@@ -65,7 +65,6 @@ class ToolSegDataset(Dataset):
 
         self.image_dir = image_dir
         self.mask_dir = mask_dir
-        self.context_dir = "/".join(mask_dir.split("/")[:-1]) + "/img_context"
         self.eval_mode = eval_mode
         self.phase_condition = phase_condition
         self.phase_one_hot = phase_one_hot
@@ -84,6 +83,9 @@ class ToolSegDataset(Dataset):
         image = image.convert("RGB")
 
         mask = np.load(os.path.join(self.mask_dir, mask_path)).astype(np.uint8)
+        if mask.ndim == 2:
+            mask = np.expand_dims(mask, axis=-1)
+
         mask = rearrange(mask, 'h w c -> c h w')
 
         image = np.array(image)
@@ -113,9 +115,8 @@ class ToolSegDataset(Dataset):
 
 
 if __name__ == "__main__":
-
-    data_csv_path = "SankaraMSICS/cataract-msics-data.csv.csv"
-    dataset = ToolSegDataset(data_csv_path, image_dir="./SankaraMSICS/images_4xresized", mask_dir="./SankaraMSICS/masks_4xresized", mode="train", fold=0, transform=None, phase_condition="film", phase_one_hot=True)
+    data_csv_path = "SankaraMSICS/cataract-msics-data.csv"
+    dataset = ToolSegDataset(data_csv_path, image_dir="./SankaraMSICS/images", mask_dir="./SankaraMSICS/masks", mode="train", fold=0, transform=None, phase_condition="pcd", phase_one_hot=True)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=4, shuffle=True, num_workers=4)
     images, masks, phases = next(iter(dataloader))
     print(images.shape, masks.shape, phases.shape)
