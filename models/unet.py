@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from layers import DoubleConv, Down, Up, OutConv
+from models.layers import DoubleConv, Down, Up, OutConv
     
 
 class UNet(nn.Module):

@@ -5,8 +5,8 @@ import torch.nn.functional as F
 from abc import ABCMeta, abstractmethod
 from collections import OrderedDict
 
-from layers import DoubleConv, Down, Up, OutConv
-from unet_pcd import UpscalePCD, PCDBase
+from models.layers import DoubleConv, Down, Up, OutConv
+from models.unet_pcd import UpscalePCD, PCDBase
 
 
 class GatedPCDBlock(PCDBase):
