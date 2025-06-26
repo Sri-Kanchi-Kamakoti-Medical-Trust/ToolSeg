@@ -26,6 +26,7 @@ pretrained: False
 save_dir: 'weights/'
 save_freq: 1
 
+#inference
 weights: 'weights/experiment_folder'
 output_dir: 'output/'
 
