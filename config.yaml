@@ -1,0 +1,41 @@
+project_name: 'msics-toolseg'
+
+# dataset details
+dataset:
+  data_csv_path: 'SanakraMSICS/cataract-msics-data.csv'
+  image_dir: 'SanakraMSICS/images'
+  mask_dir: 'SanakraMSICS/masks'
+  phase_one_hot: TRUE
+
+
+seed: 42
+
+# training details
+init_lr: 1e-4
+n_epochs: 200
+batch_size: 16
+num_workers: 14
+fold: 0
+patience: 10
+
+data_aug: 0
+
+pretrained: False
+
+# saving checkpoints
+save_dir: 'weights/'
+save_freq: 1
+
+weights: 'weights/experiment_folder'
+output_dir: 'output/'
+
+condition:
+  phase: 'none'  # 'none', 'pcd', 'pcd-gated'
+is_debug: False
+
+# model details
+model:
+  name: 'unet' # 'unet', 'panet', 'ternausnet'
+  n_channels: 3
+  n_classes: 14
+  n_phases: 19
